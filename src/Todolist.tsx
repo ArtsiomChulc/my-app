@@ -1,5 +1,5 @@
 import React from 'react';
-import {FilterValuesType} from './App';
+import { FilterValuesType } from './App';
 
 type TaskType = {
     id: number
@@ -18,27 +18,33 @@ export function Todolist(props: PropsType) {
     return <div>
         <h3>{props.title}</h3>
         <div>
-            <input/>
+            <input />
             <button>+</button>
         </div>
         <ul>
             {
                 props.tasks.map(t => <li key={t.id}>
-                    <input type="checkbox" checked={t.isDone}/>
+                    <input type="checkbox" checked={t.isDone} />
                     <span>{t.title}</span>
-                    <button onClick={ () => { props.removeTask(t.id) } }>x</button>
+                    <button onClick={() => { props.removeTask(t.id) }}>x</button>
                 </li>)
             }
         </ul>
         <div>
-            <button onClick={ () => { props.changeFilter("all") } }>
+            <button onClick={() => props.changeFilter("delall")}>Delete All tasks</button>
+        </div>
+        <div>
+            <button onClick={() => { props.changeFilter("all") }}>
                 All
             </button>
-            <button onClick={ () => { props.changeFilter("active") } }>
+            <button onClick={() => { props.changeFilter("active") }}>
                 Active
             </button>
-            <button onClick={ () => { props.changeFilter("completed") } }>
+            <button onClick={() => { props.changeFilter("completed") }}>
                 Completed
+            </button>
+            <button onClick={() => { props.changeFilter("threetasks") }}>
+                the first 3 tasks are visible
             </button>
         </div>
     </div>
